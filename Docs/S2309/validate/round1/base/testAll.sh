@@ -15,8 +15,7 @@ d=`date`
 echo "$d" >> $output
 
 while IFS=, read -r f1 f2 f3; do
-        #./bin/$f1  --gtest_filter="$f2.$f3"
-        env WARNTIME=$timeout WARNSIG=1 KILLTIME=1.000001 ./timelimit ./$f1  --gtest_filter="$f2.$f3"
+        env WARNTIME=$timeout WARNSIG=1 KILLTIME=1.000001 ./timelimit ./bin/$f1  --gtest_filter="$f2.$f3"
         ret=$?
         echo "$f1,$f2,$f3,$ret" >> $output
 done < "$input"
